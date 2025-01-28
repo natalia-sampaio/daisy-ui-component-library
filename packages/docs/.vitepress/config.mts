@@ -33,6 +33,8 @@ export default defineConfig({
           { text: 'Loading', link: '/components/loading' },
           { text: 'Badge', link: '/components/badge' },
           { text: 'Tabs', link: '/components/tabs' },
+          { text: 'Button', link: '/components/button' },
+          { text: 'BroswerMockup', link: '/components/broswermockup' },
           // do not remove - used by hygen
         ]
       }
