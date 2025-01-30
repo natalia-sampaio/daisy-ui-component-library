@@ -2,7 +2,12 @@
 import { provide } from 'vue'
 import { nanoid } from 'nanoid'
 
+const props = defineProps<{
+  multipleOpen?: boolean
+}>()
+
 provide('accordionId', nanoid())
+provide('multipleOpen', props.multipleOpen)
 </script>
 
 <template>
