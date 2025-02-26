@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { DaisyAvatar, DaisyBadge } from 'daisy-vue'
-import { masks, Masks, sizes } from 'daisy-vue/globals'
+import { masks, Masks, sizes,  colorsBrand, colorsState, colorsBase } from 'daisy-vue/globals'
+
+const prefixedColors = [...colorsBrand, ...colorsState, ...colorsBase].map((color) => `bg-${color}`)
+
+const prefixedText = [...colorsBrand, ...colorsState, ...colorsBase].map((color) => `text-${color}-content`)
+
 </script>
 
 # Avatar Component
@@ -36,26 +41,41 @@ A background color is optional but improves visibility.
 
 <DaisyAvatar placeholder="ND" />
 <DaisyAvatar
-  class="bg-pink-400"
+  class="bg-base-100"
   src="https://i.pravatar.cc/150?img=100000"
   placeholder="ND"
 />
 
 ```vue
 <DaisyAvatar src="https://i.pravatar.cc/150?img=100000" placeholder="ND" />
-<DaisyAvatar src="https://i.pravatar.cc/150?img=100000" placeholder="ND" class="bg-pink-400" />
+<DaisyAvatar src="https://i.pravatar.cc/150?img=100000" placeholder="ND" class="bg-base-100" />
 ```
 
 ## Custom Background Color
 
-You can use any [`Tailwind CSS color`](https://tailwindcss.com/docs/colors) to define a background color.
+You can use any [`Tailwind CSS color`](https://tailwindcss.com/docs/colors) or use Tailwind's square bracket notation for arbitrary values to generate a class on the fly with any arbitrary value for the background color.
 
 <div class="grid grid-cols-2 gap-4">
-<div v-for="color in ['bg-teal-500', 'bg-purple-500', 'bg-pink-500', 'bg-amber-800']" :key="color">
+<div v-for="color in ['bg-teal-500', 'bg-purple-500', 'bg-[#00879E]', 'bg-[rgb(199,219,156)]']" :key="color">
 <DaisyAvatar placeholder="ND" :class="color" />
 
 ```vue-vue
 <DaisyAvatar placeholder="ND" class="{{color}}" />
+```
+
+</div>
+</div>
+
+## Using DaisyUI's Theme Colors
+
+You can also use any [`DaisyUI theme color`](https://daisyui.com/docs/colors/) to change the background color.
+
+<div class="grid grid-cols-2 gap-4">
+<div v-for="(color, index) in [...prefixedColors]" :key="color">
+<DaisyAvatar placeholder="ND" :class="color + ' ' + prefixedText[index]" />
+
+```vue-vue
+<DaisyAvatar placeholder="ND" class="{{color + ' ' + prefixedText[index]}}" />
 ```
 
 </div>
@@ -77,7 +97,7 @@ Use the `mask` prop to change the shape.
 </div>
 </div>
 
-## With badge
+## With Badge
 
 You can use [`DaisyBadge`](/components/badge) to add status indicators.
 
@@ -93,7 +113,7 @@ You can use [`DaisyBadge`](/components/badge) to add status indicators.
 </div>
 ```
 
-## Different sizes
+## Different Sizes
 
 The `size` prop allows different avatar sizes.
 

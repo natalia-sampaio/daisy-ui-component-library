@@ -58,6 +58,6 @@ const errorLoadingImage = ref(false)
     >
       {{ placeholder }}
     </div>
-    <img v-else :src="src" @error="errorLoadingImage = true" alt="profile image" />
+    <img v-else :src="src" @error="errorLoadingImage = true" alt="profile picture" />
   </div>
 </template>

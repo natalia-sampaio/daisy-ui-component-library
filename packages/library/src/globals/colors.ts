@@ -4,7 +4,7 @@ export type ColorsBrand = (typeof colorsBrand)[number]
 export const colorsState = ['success', 'warning', 'error', 'info'] as const
 export type ColorsState = (typeof colorsState)[number]
 
-export const colorsBase = ['base-100', 'base-200', 'base-300', 'base-content'] as const
+export const colorsBase = ['base-100', 'base-200', 'base-300'] as const
 export type ColorsBase = (typeof colorsBase)[number]
 
 export const colorsContent = [
